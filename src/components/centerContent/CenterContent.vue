@@ -16,8 +16,7 @@ import echarts from 'echarts/lib/echarts'
 // import china from 'echarts/map/json/china.json'
 import 'echarts/map/js/province/anhui'
 import 'echarts/lib/chart/map'
-// import mingguang from '../../assets/json/mingguang.json'
-import instance from '../../utils/request'
+import mingguang from '../../assets/json/mingguang.json'
 export default {
   // import引入的组件需要注入到对象中才能使用
   components: {},
@@ -129,13 +128,10 @@ export default {
   methods: {
     async initMap() {
       var mapChart = echarts.init(document.getElementById('container'))
-      instance.get('/json/mingguang.json').then(({ data }) => {
-        console.log(data)
-        echarts.registerMap('明光市', data, {})
-        // let option = myChart.setOption(option)
-        mapChart.setOption(this.option)
-      })
-      // console.log(data)
+      console.log(mingguang)
+      echarts.registerMap('明光市', mingguang, {})
+      // let option = myChart.setOption(option)
+      mapChart.setOption(this.option)
       // 基于准备好的dom，初始化echarts实例
     }
   },
